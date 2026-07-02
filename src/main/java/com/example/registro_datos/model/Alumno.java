@@ -3,19 +3,31 @@ package com.example.registro_datos.model;
 public class Alumno {
     private int id;
     private String nombre;
-    private String apellido;
+    private String apellidos;
     private int edad;
     private String matricula;
     private String correo;
     private String sexo;
 
+    // Constructor vacío: lo necesitan AlumnoDao (getAll/getById) y AlumnoServlet
+    // cuando hacen "new Alumno()" y llenan los datos con los setters.
     public Alumno() {
     }
 
-    public Alumno(int id, String nombre, String apellido, int edad, String matricula, String correo, String sexo) {
+    // Constructor sin id: útil al crear un alumno nuevo antes de insertarlo.
+    public Alumno(String nombre, String apellidos, int edad, String matricula, String correo, String sexo) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.edad = edad;
+        this.matricula = matricula;
+        this.correo = correo;
+        this.sexo = sexo;
+    }
+
+    public Alumno(int id, String nombre, String apellidos, int edad, String matricula, String correo, String sexo) {
         this.id = id;
         this.nombre = nombre;
-        this.apellido = apellido;
+        this.apellidos = apellidos;
         this.edad = edad;
         this.matricula = matricula;
         this.correo = correo;
@@ -38,12 +50,12 @@ public class Alumno {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getApellidos() {
+        return apellidos;
     }
 
-    public void setApellidos(String apellido) {
-        this.apellido = apellido;
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public int getEdad() {

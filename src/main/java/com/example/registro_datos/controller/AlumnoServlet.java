@@ -19,10 +19,9 @@ public class AlumnoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Alumno> lista = AlumnoDao.getAll();
-        request.setAttribute("listaMascotas", lista);
-        request.getRequestDispatcher("gestion-alumnos.jsp").forward(request, response);
-    }
+        List<Alumno> lista = alumnoDao.getAll();
+        request.setAttribute("listaAlumnos", lista);
+        request.getRequestDispatcher("layout/gestion-alumnos.jsp").forward(request, response);    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -36,20 +35,20 @@ public class AlumnoServlet extends HttpServlet {
             String correo = request.getParameter("correo");
             String sexo = request.getParameter("sexo");
 
-            Mascota nuevaMascota = new Mascota();
-            nuevaMascota.setNombre(nombre);
-            nuevaMascota.setApellidos(apellidos);
-            nuevaMascota.setEdad(edad);
-            nuevaMascota.setPersonalidad(personalidad);
-            nuevaMascota.setCorreo(correo);
-            nuevaMascota.setSexo(sexo);
+            Alumno nuevoAlumno = new Alumno();
+            nuevoAlumno.setNombre(nombre);
+            nuevoAlumno.setApellidos(apellidos);
+            nuevoAlumno.setEdad(edad);
+            nuevoAlumno.setMatricula(matricula);
+            nuevoAlumno.setCorreo(correo);
+            nuevoAlumno.setSexo(sexo);
 
-            mascotaDao.create(nuevaMascota);
+            alumnoDao.create(nuevoAlumno);
         } catch (NumberFormatException e) {
             System.err.println("Error al transformar datos numéricos en el registro: " + e.getMessage());
             e.printStackTrace();
         }
 
-        response.sendRedirect("mascota");
+        response.sendRedirect("alumno");
     }
 }

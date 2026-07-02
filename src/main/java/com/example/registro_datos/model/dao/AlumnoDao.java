@@ -3,7 +3,6 @@ package com.example.registro_datos.model.dao;
 import com.example.registro_datos.model.Alumno;
 import com.example.registro_datos.utils.SQLConnector;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,13 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AlumnoDao implements Dao<Alumno, Integer>{
+
     @Override
     public boolean create(Alumno entidad) {
-        String sql = "INSERT INTO ALUMNO(nombre, apellido, edad, matricula, correo, sexo) VALUES(?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO ALUMNOS(nombre, apellidos, edad, matricula, correo, sexo) VALUES(?, ?, ?, ?, ?, ?)";
         try (Connection con = SQLConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, entidad.getNombre());
-            ps.setString(2, entidad.getApellido());
+            ps.setString(2, entidad.getApellidos());
             ps.setInt(3, entidad.getEdad());
             ps.setString(4, entidad.getMatricula());
             ps.setString(5, entidad.getCorreo());
@@ -37,7 +37,7 @@ public class AlumnoDao implements Dao<Alumno, Integer>{
     public List<Alumno> getAll() {
         List<Alumno> datos = new ArrayList<>();
         try (Connection con = SQLConnector.getConnection();
-             PreparedStatement ps = con.prepareStatement("SELECT * FROM MASCOTAS");
+             PreparedStatement ps = con.prepareStatement("SELECT * FROM ALUMNOS");
              ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
@@ -90,7 +90,7 @@ public class AlumnoDao implements Dao<Alumno, Integer>{
              PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setString(1, entidad.getNombre());
-            ps.setString(2, entidad.getApellido());
+            ps.setString(2, entidad.getApellidos());
             ps.setInt(3, entidad.getEdad());
             ps.setString(4, entidad.getMatricula());
             ps.setString(5, entidad.getCorreo());

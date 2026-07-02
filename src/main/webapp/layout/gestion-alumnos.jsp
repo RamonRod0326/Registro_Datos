@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<%@ include file="layout/header.jsp" %>
+<%@ include file="header.jsp" %>
 <div class="row g-4">
     <div class="col-12">
         <h1 class="mb-4">Bienvenidos a la UTEZ</h1>
@@ -58,4 +58,4 @@
     </div>
 </div>
 
-<%@ include file="layout/footer.jsp" %>
+<%@ include file="footer.jsp" %>
