@@ -1,6 +1,5 @@
 package com.example.registro_datos.controller;
 
-import com.example.registro_datos.model.dao.AlumnoDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -15,7 +14,7 @@ import java.util.List;
 @WebServlet(name = "MascotaServlet", value = "/mascota")
 public class MascotaServlet extends HttpServlet {
 
-    private final AlumnoDao alumnoDao = new AlumnoDao();
+    private final MascotaDao mascotaDao = new MascotaDao();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
