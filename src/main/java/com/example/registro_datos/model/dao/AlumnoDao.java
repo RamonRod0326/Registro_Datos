@@ -1,7 +1,8 @@
 package com.example.registro_datos.model.dao;
 
-import com.example.registro_datos.model.Mascota;
-import com.example.registro_datos.utils.SQLConnector;
+import com.example.registro_datos.model.Alumno;
+import mx.edu.utez.integradora_poo_2026.model.Mascota;
+import mx.edu.utez.integradora_poo_2026.utils.SQLConnector;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,18 +11,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MascotaDao implements Dao<Mascota, Integer>{
+public class AlumnoDao implements Dao<Alumno, Integer>{
     @Override
-    public boolean create(Mascota entidad) {
-        String sql = "INSERT INTO MASCOTAS(nombre, especie, edad, personalidad, foto, vacunada) VALUES(?, ?, ?, ?, ?, ?)";
+    public boolean create(Alumno entidad) {
+        String sql = "INSERT INTO ALUMNO(nombre, apellido, edad, matricula, correo, sexo) VALUES(?, ?, ?, ?, ?, ?)";
         try (Connection con = SQLConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, entidad.getNombre());
-            ps.setString(2, entidad.getEspecie());
+            ps.setString(2, entidad.getApellido());
             ps.setInt(3, entidad.getEdad());
-            ps.setString(4, entidad.getPersonalidad());
-            ps.setString(5, entidad.getFoto());
-            ps.setInt(6, entidad.isVacunada() ? 1 : 0);
+            ps.setString(4, entidad.getMatricula());
+            ps.setString(5, entidad.getCorreo());
+            ps.setString(6, entidad.getSexo());
 
             int filasAfectadas = ps.executeUpdate();
             return filasAfectadas > 0;
@@ -33,8 +34,8 @@ public class MascotaDao implements Dao<Mascota, Integer>{
     }
 
     @Override
-    public List<Mascota> getAll() {
-        List<Mascota> datos = new ArrayList<>();
+    public List<Alumno> getAll() {
+        List<Alumno> datos = new ArrayList<>();
         try (Connection con = SQLConnector.getConnection();
              PreparedStatement ps = con.prepareStatement("SELECT * FROM MASCOTAS");
              ResultSet rs = ps.executeQuery()) {
@@ -83,7 +84,7 @@ public class MascotaDao implements Dao<Mascota, Integer>{
     }
 
     @Override
-    public boolean update(Mascota entidad) {
+    public boolean update(Alumno entidad) {
         String sql = "UPDATE MASCOTAS SET nombre = ?, especie = ?, edad = ?, personalidad = ?, foto = ?, vacunada = ? WHERE id = ?";
         try (Connection con = SQLConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
