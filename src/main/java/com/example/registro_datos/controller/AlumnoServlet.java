@@ -1,26 +1,25 @@
 package com.example.registro_datos.controller;
 
+import com.example.registro_datos.model.Alumno;
 import com.example.registro_datos.model.dao.AlumnoDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import com.example.registro_datos.model.Mascota;
-import com.example.registro_datos.model.dao.MascotaDao;
 
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "MascotaServlet", value = "/mascota")
-public class MascotaServlet extends HttpServlet {
+@WebServlet(name = "AlumnoServlet", value = "/alumno")
+public class AlumnoServlet extends HttpServlet {
 
     private final AlumnoDao alumnoDao = new AlumnoDao();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Mascota> lista = mascotaDao.getAll();
+        List<Alumno> lista = AlumnoDao.getAll();
         request.setAttribute("listaMascotas", lista);
         request.getRequestDispatcher("gestion-mascotas.jsp").forward(request, response);
     }
