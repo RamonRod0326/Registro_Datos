@@ -1,25 +1,25 @@
 package com.example.registro_datos.controller;
 
+import com.example.registro_datos.model.Alumno;
+import com.example.registro_datos.model.dao.AlumnoDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import mx.edu.utez.integradora_poo_2026.model.Mascota;
-import mx.edu.utez.integradora_poo_2026.model.dao.MascotaDao;
 
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "MascotaServlet", value = "/mascota")
-public class MascotaServlet extends HttpServlet {
+@WebServlet(name = "AlumnoServlet", value = "/alumno")
+public class AlumnoServlet extends HttpServlet {
 
-    private final MascotaDao mascotaDao = new MascotaDao();
+    private final AlumnoDao alumnoDao = new AlumnoDao();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Mascota> lista = mascotaDao.getAll();
+        List<Alumno> lista = AlumnoDao.getAll();
         request.setAttribute("listaMascotas", lista);
         request.getRequestDispatcher("gestion-alumnos.jsp").forward(request, response);
     }
@@ -30,19 +30,19 @@ public class MascotaServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         try {
             String nombre = request.getParameter("nombre");
-            String especie = request.getParameter("especie");
+            String apellidos = request.getParameter("apellidos");
             int edad = Integer.parseInt(request.getParameter("edad"));
-            String personalidad = request.getParameter("personalidad");
-            String foto = request.getParameter("foto");
-            boolean vacunada = request.getParameter("vacunada") != null;
+            String matricula = request.getParameter("matricula");
+            String correo = request.getParameter("correo");
+            String sexo = request.getParameter("sexo");
 
             Mascota nuevaMascota = new Mascota();
             nuevaMascota.setNombre(nombre);
-            nuevaMascota.setEspecie(especie);
+            nuevaMascota.setApellidos(apellidos);
             nuevaMascota.setEdad(edad);
             nuevaMascota.setPersonalidad(personalidad);
-            nuevaMascota.setFoto(foto);
-            nuevaMascota.setVacunada(vacunada);
+            nuevaMascota.setCorreo(correo);
+            nuevaMascota.setSexo(sexo);
 
             mascotaDao.create(nuevaMascota);
         } catch (NumberFormatException e) {
