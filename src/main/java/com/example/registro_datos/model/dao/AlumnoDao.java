@@ -37,7 +37,7 @@ public class AlumnoDao implements Dao<Alumno, Integer>{
     public List<Alumno> getAll() {
         List<Alumno> datos = new ArrayList<>();
         try (Connection con = SQLConnector.getConnection();
-             PreparedStatement ps = con.prepareStatement("SELECT * FROM MASCOTAS");
+             PreparedStatement ps = con.prepareStatement("SELECT * FROM ALUMNO");
              ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
@@ -59,7 +59,7 @@ public class AlumnoDao implements Dao<Alumno, Integer>{
 
     @Override
     public Alumno getById(Integer id) {
-        String sql = "SELECT * FROM ALUMNOS WHERE id = ?";
+        String sql = "SELECT * FROM ALUMNO WHERE id = ?";
         try (Connection con = SQLConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
@@ -85,7 +85,7 @@ public class AlumnoDao implements Dao<Alumno, Integer>{
 
     @Override
     public boolean update(Alumno entidad) {
-        String sql = "UPDATE ALUMNOS SET nombre = ?, apellidos = ?, edad = ?, matricula = ?, correo = ?, sexo = ? WHERE id = ?";
+        String sql = "UPDATE ALUMNO SET nombre = ?, apellidos = ?, edad = ?, matricula = ?, correo = ?, sexo = ? WHERE id = ?";
         try (Connection con = SQLConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
@@ -107,7 +107,7 @@ public class AlumnoDao implements Dao<Alumno, Integer>{
 
     @Override
     public boolean delete(Integer id) {
-        String sql = "DELETE FROM ALUMNOS WHERE id = ?";
+        String sql = "DELETE FROM ALUMNO WHERE id = ?";
         try (Connection con = SQLConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
