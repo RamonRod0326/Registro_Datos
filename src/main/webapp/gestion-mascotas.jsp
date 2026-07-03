@@ -98,7 +98,7 @@
                     </div>
 
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-primary carga"><i class="bi bi-save"></i> Guardar</button>
+                        <button type="submit" class="btn btn-primary carga" id="guardar"><i class="bi bi-save"></i> Guardar</button>
                     </div>
                 </form>
             </div>
