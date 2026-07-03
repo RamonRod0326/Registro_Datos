@@ -9,8 +9,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
-// El filtro se aplicará a todas las URLs de tu app
-@WebFilter("/*")
+// DESACTIVADO TEMPORALMENTE: se comentó @WebFilter para que Tomcat no lo registre.
+// Cuando ya tengas login.jsp y el sistema de sesiones listo, descomenta la línea de abajo.
+// @WebFilter("/*")
 public class FiltroAutenticacion extends HttpFilter {
 
     @Override

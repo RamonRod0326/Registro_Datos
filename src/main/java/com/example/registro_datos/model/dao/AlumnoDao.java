@@ -2,8 +2,7 @@ package com.example.registro_datos.model.dao;
 
 import com.example.registro_datos.model.Alumno;
 import com.example.registro_datos.utils.SQLConnector;
-import mx.edu.utez.integradora_poo_2026.model.Mascota;
-import mx.edu.utez.integradora_poo_2026.utils.SQLConnector;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
