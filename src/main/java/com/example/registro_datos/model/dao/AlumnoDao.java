@@ -14,7 +14,7 @@ import java.util.List;
 public class AlumnoDao implements Dao<Alumno, Integer>{
     @Override
     public boolean create(Alumno entidad) {
-        String sql = "INSERT INTO ALUMNO(nombre, apellido, edad, matricula, correo, sexo) VALUES(?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO ALUMNO(nombre, apellidos, edad, matricula, correo, sexo) VALUES(?, ?, ?, ?, ?, ?)";
         try (Connection con = SQLConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, entidad.getNombre());
